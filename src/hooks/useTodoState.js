@@ -1,11 +1,11 @@
 import useLocalStorageState from "./useLocalStorageState";
-import uuid from 'uuid/v4'
+import {v4 as uuidv4} from 'uuid'
 export default initialTodos => {
     const [todos,setTodos]= useLocalStorageState('todos',initialTodos);
     return {
         todos,
         addTodo: (newTask)=> {
-            setTodos([...todos, {id: uuid(),task:newTask, completed:false}]);
+            setTodos([...todos, {id: uuidv4(),task:newTask, completed:false}]);
         },
         deleteTodo: (id) => {
             const updatedTodos= todos.filter(todo => (
